@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dr. Justin Zhan · Professor and Department Head, University of Cincinnati</title>
+  <meta name="description" content="Academic website of Dr. Justin Zhan, Professor and Head of the Department of Computer Science, University of Cincinnati.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/theme.js"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, h4, .font-serif { font-family: 'Source Serif 4', Georgia, serif; }
+  </style>
+</head>
+<body class="bg-uc-slate text-uc-charcoal antialiased min-h-screen flex flex-col">
+
+  <div id="site-header"></div>
+
+  <main class="flex-1">
+
+    <!-- ── Biography ── -->
+    <section class="max-w-6xl mx-auto px-5 sm:px-8 py-12 md:py-20 grid gap-10 md:grid-cols-[280px_1fr] md:items-start">
+      <div data-render="headshot"></div>
+      <div data-render="bio"></div>
+    </section>
+
+    <!-- ── Impact stats banner ── -->
+    <section class="bg-uc-charcoal py-10">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div data-render="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- ── News + Selected Publications (side-by-side on desktop) ── -->
+    <section class="max-w-6xl mx-auto px-5 sm:px-8 py-14 grid gap-12 lg:grid-cols-2">
+
+      <!-- News feed -->
+      <div>
+        <div class="flex items-end justify-between gap-4 mb-6">
+          <h2 class="font-serif text-2xl font-bold">Latest News</h2>
+        </div>
+        <div data-render="news" data-limit="4" class="space-y-0"></div>
+      </div>
+
+      <!-- Selected publications -->
+      <div>
+        <div class="flex items-end justify-between gap-4 mb-6">
+          <h2 class="font-serif text-2xl font-bold">Selected Publications</h2>
+          <a href="publications.html" class="text-sm font-semibold text-uc-red hover:text-uc-deep whitespace-nowrap">All publications →</a>
+        </div>
+        <ul data-render="pub-preview" data-limit="5" class="divide-y divide-uc-charcoal/10 bg-white rounded-xl ring-1 ring-black/5 shadow-sm px-5"></ul>
+      </div>
+
+    </section>
+
+    <!-- ── Research interests preview ── -->
+    <section class="max-w-6xl mx-auto px-5 sm:px-8 pb-16 md:pb-24">
+      <div class="flex items-end justify-between gap-4 mb-8">
+        <h2 class="font-serif text-2xl md:text-3xl font-bold">Research Interests</h2>
+        <a href="research.html" class="text-sm font-semibold text-uc-red hover:text-uc-deep">Full overview →</a>
+      </div>
+      <div data-render="research-preview" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
