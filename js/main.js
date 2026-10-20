@@ -172,25 +172,28 @@
         </li>`).join('');
     },
 
-    publications() {
+    publications(el) {
       if (!D.publications || !D.publications.length) return emptyState('Publications coming soon.');
-      const byYear = D.publications.reduce((acc, p) => {
+      const limit = parseInt(el && el.dataset.limit, 10) || D.publications.length;
+      const sorted = [...D.publications].sort((a, b) => b.year - a.year).slice(0, limit);
+      const byYear = sorted.reduce((acc, p) => {
         (acc[p.year] = acc[p.year] || []).push(p); return acc;
       }, {});
       return Object.keys(byYear).sort((a, b) => b - a).map(year => `
-        <section class="grid gap-4 md:grid-cols-[80px_1fr]">
-          <h2 class="font-serif text-2xl font-bold text-uc-red">${year}</h2>
-          <ul class="space-y-4">
+        <section class="grid md:grid-cols-[64px_1fr] gap-x-6 gap-y-2">
+          <div class="md:pt-1">
+            <span class="inline-block font-mono text-sm font-bold text-uc-red md:sticky md:top-24">${year}</span>
+          </div>
+          <ul class="divide-y divide-uc-charcoal/8">
             ${byYear[year].map(p => `
-              <li class="bg-white rounded-xl p-5 ring-1 ring-black/5 shadow-sm">
-                <div class="flex flex-wrap gap-2 items-center mb-2">
-                  <span class="text-xs rounded-full px-2.5 py-0.5 bg-uc-slate font-semibold text-uc-charcoal/70">${esc(p.type || 'Paper')}</span>
+              <li class="py-3 flex gap-3 items-baseline">
+                <span class="shrink-0 mt-0.5 text-[10px] font-semibold uppercase tracking-wide rounded px-1.5 py-0.5 bg-uc-slate text-uc-charcoal/60 leading-none">${esc(p.type || 'Paper')}</span>
+                <div class="min-w-0">
+                  <p class="text-sm font-semibold text-uc-charcoal leading-snug">
+                    ${p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener" class="hover:text-uc-red transition">${esc(p.title)}</a>` : esc(p.title)}
+                  </p>
+                  <p class="text-xs text-uc-charcoal/60 mt-0.5 leading-snug">${esc(p.authors)} — <em>${esc(p.venue)}</em></p>
                 </div>
-                <p class="font-serif text-base font-semibold text-uc-charcoal leading-snug">
-                  ${p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener" class="hover:text-uc-red transition">${esc(p.title)}</a>` : esc(p.title)}
-                </p>
-                <p class="text-sm text-uc-charcoal/70 mt-1">${esc(p.authors)}</p>
-                <p class="text-sm text-uc-charcoal/50 italic mt-0.5">${esc(p.venue)}</p>
               </li>`).join('')}
           </ul>
         </section>`).join('');

@@ -39,10 +39,10 @@ window.SITE_DATA = {
     department: "Department of Computer Science",
     college: "College of Engineering and Applied Science",
     university: "University of Cincinnati",
-    office: "Digital Future 1, Room 520C · 3080 Exploration Avenue · Cincinnati, OH 45221",
+    office: "Digital Futures 1, Room 520C · 3080 Exploration Avenue · Cincinnati, OH 45221",
     email: "zhanjt@ucmail.uc.edu",
     phone: "(513) 556-7616",
-    headshot: "images/headshot.jpg",
+    headshot: "Dr. Zhan.jpeg",
     bio: [
       "Dr. Justin Zhan is the Fred A. & Juliet Esselborn Geier Chair Professor and Head of the Department of Computer Science in the College of Engineering and Applied Science at the University of Cincinnati. His research spans data science, artificial intelligence, blockchain technologies, biomedical informatics, information assurance, and social computing.",
       "He has published more than 250 articles in peer-reviewed journals and conferences, delivered over 30 keynote and invited talks, and served as PI or Co-PI on more than 60 funded projects from the National Science Foundation, Department of Defense, and National Institutes of Health.",
