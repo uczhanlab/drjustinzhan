@@ -48,10 +48,6 @@
     el.innerHTML = `
       <header class="bg-uc-charcoal text-white">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          // <a href="index.html" class="flex flex-col leading-tight">
-          //   <span class="font-serif text-lg font-semibold">${esc(D.person.name)}</span>
-          //   <span class="text-xs tracking-wide uppercase text-white/65">${esc(D.person.university)}</span>
-          // </a>
               <a href="index.html" class="flex items-center gap-3 leading-tight">
                 <img src="${esc(D.person.headshot)}" alt=""
                     class="h-9 w-9 rounded-full object-cover ring-2 ring-white/20 shrink-0"
