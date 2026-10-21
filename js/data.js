@@ -40,7 +40,7 @@ window.SITE_DATA = {
     college: "College of Engineering and Applied Science",
     university: "University of Cincinnati",
     office: "Digital Futures 1, Room 520C · 3080 Exploration Avenue · Cincinnati, OH 45221",
-    email: "zhanjt@ucmail.uc.edu",
+    email: "justin.zhan@uc.edu",
     phone: "(513) 556-7616",
     headshot: "Dr. Zhan.jpeg",
     bio: [
