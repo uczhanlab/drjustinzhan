@@ -57,7 +57,13 @@
                     <span class="text-xs tracking-wide uppercase text-white/65">${esc(D.person.university)}</span>
                 </span>
               </a>
-          <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium" aria-label="Primary">${navLinks}</nav>
+          <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium items-center" aria-label="Primary">
+  ${navLinks}
+  <a href="https://cincysi.si" target="_blank" rel="noopener"
+     class="ml-2 rounded-lg bg-uc-red px-4 py-1.5 text-sm font-semibold text-white hover:bg-uc-deep transition-colors">
+    CincySI Lab ↗
+  </a>
+</nav>
         </div>
         <div class="h-1 bg-uc-red"></div>
       </header>`;
