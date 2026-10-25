@@ -268,7 +268,6 @@
 //   });
 // })();
 
-
 /* =====================================================================
    PRESENTATION LOGIC. No content lives here.
    Content comes from js/data.js (window.SITE_DATA).
@@ -317,20 +316,20 @@
 
     el.innerHTML = `
       <header class="bg-uc-charcoal text-white">
-        <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <a href="index.html" class="flex items-center gap-3 leading-tight">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-4 flex-wrap">
+          <a href="index.html" class="flex items-center gap-3 leading-tight shrink-0">
             <img src="${esc(D.person.headshot)}" alt=""
                 class="h-9 w-9 rounded-full object-cover ring-2 ring-white/20 shrink-0"
                 onerror="this.style.display='none'">
             <span class="flex flex-col">
-                <span class="font-serif text-lg font-semibold">${esc(D.person.name)}</span>
-                <span class="text-xs tracking-wide uppercase text-white/65">${esc(D.person.university)}</span>
+              <span class="font-serif text-base sm:text-lg font-semibold leading-tight">${esc(D.person.name)}</span>
+              <span class="text-[10px] sm:text-xs tracking-wide uppercase text-white/65">${esc(D.person.university)}</span>
             </span>
           </a>
-          <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium items-center" aria-label="Primary">
+          <nav class="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 text-sm font-medium items-center" aria-label="Primary">
             ${navLinks}
             <a href="https://cincysi.si" target="_blank" rel="noopener"
-               class="ml-2 rounded-lg bg-uc-red px-4 py-1.5 text-sm font-semibold text-white hover:bg-uc-deep transition-colors">
+               class="rounded-lg bg-uc-red px-3 sm:px-4 py-1.5 text-sm font-semibold text-white hover:bg-uc-deep transition-colors whitespace-nowrap">
               CincySI Lab ↗
             </a>
           </nav>
@@ -383,7 +382,7 @@
     headshot() {
       const p = D.person;
       return `
-        <figure class="bg-white rounded-2xl shadow-sm ring-1 ring-black/5 overflow-hidden sticky top-24">
+        <figure class="bg-white rounded-2xl shadow-sm ring-1 ring-black/5 overflow-hidden md:sticky md:top-24 max-w-xs mx-auto w-full">
           <div class="relative aspect-[4/5] bg-gradient-to-br from-uc-charcoal to-uc-deep">
             <span class="absolute inset-0 flex items-center justify-center text-sm text-white/60">Headshot placeholder</span>
             <img src="${esc(p.headshot)}" alt="Portrait of ${esc(p.name)}"
@@ -402,9 +401,9 @@
       const p = D.person;
       return `
         <p class="text-sm font-semibold uppercase tracking-widest text-uc-red">${esc(p.chair)}</p>
-        <h1 class="mt-3 font-serif text-4xl md:text-5xl font-bold text-uc-charcoal">${esc(p.name)}</h1>
-        <p class="mt-3 text-lg text-uc-charcoal/80">${esc(p.title)}, ${esc(p.department)}<br>${esc(p.college)}, ${esc(p.university)}</p>
-        <div class="mt-8 space-y-4 text-base leading-relaxed text-uc-charcoal/90">
+        <h1 class="mt-3 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-uc-charcoal leading-tight">${esc(p.name)}</h1>
+        <p class="mt-3 text-base sm:text-lg text-uc-charcoal/80">${esc(p.title)}, ${esc(p.department)}<br>${esc(p.college)}, ${esc(p.university)}</p>
+        <div class="mt-6 sm:mt-8 space-y-4 text-sm sm:text-base leading-relaxed text-uc-charcoal/90">
           ${p.bio.map(par => `<p>${par}</p>`).join('')}
         </div>`;
     },
@@ -412,8 +411,8 @@
     stats() {
       if (!D.stats || !D.stats.length) return '';
       return D.stats.map(s => `
-        <div class="text-center bg-white rounded-xl p-5 shadow-sm ring-1 ring-black/5">
-          <p class="font-serif text-4xl font-bold text-uc-red">${esc(s.value)}</p>
+        <div class="text-center bg-white rounded-xl p-4 sm:p-5 shadow-sm ring-1 ring-black/5">
+          <p class="font-serif text-3xl sm:text-4xl font-bold text-uc-red">${esc(s.value)}</p>
           <p class="mt-1 text-xs font-medium text-uc-charcoal/70 uppercase tracking-wide">${esc(s.label)}</p>
         </div>`).join('');
     },
@@ -441,9 +440,9 @@
       const n = parseInt(el.dataset.limit, 10) || 3;
       const sorted = [...D.publications].sort((a, b) => b.year - a.year).slice(0, n);
       return sorted.map(p => `
-        <li class="flex gap-4 py-4 border-b border-uc-charcoal/10 last:border-0">
+        <li class="flex gap-3 sm:gap-4 py-4 border-b border-uc-charcoal/10 last:border-0">
           <span class="shrink-0 font-mono text-sm font-bold text-uc-red mt-0.5">${esc(String(p.year))}</span>
-          <div>
+          <div class="min-w-0">
             <p class="text-sm font-semibold text-uc-charcoal leading-snug">
               ${p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener" class="hover:text-uc-red transition">${esc(p.title)}</a>` : esc(p.title)}
             </p>
@@ -487,7 +486,7 @@
       return D.patents.map(p => `
         <li class="bg-white rounded-xl p-5 ring-1 ring-black/5 shadow-sm flex gap-4">
           <span class="shrink-0 text-xs font-mono font-bold text-uc-red mt-1 pt-0.5">${esc(p.number)}</span>
-          <div>
+          <div class="min-w-0">
             <p class="font-serif text-base font-semibold text-uc-charcoal leading-snug">
               ${p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener" class="hover:text-uc-red">${esc(p.title)}</a>` : esc(p.title)}
             </p>
@@ -504,9 +503,9 @@
       const current = D.teaching.filter(c => c.term === 'Current');
       const past    = D.teaching.filter(c => c.term === 'Past');
       const renderList = items => items.map(c => `
-        <li class="flex gap-4 py-3 border-b border-uc-slate last:border-0">
-          <span class="shrink-0 w-20 text-xs font-mono font-semibold text-uc-red pt-0.5">${esc(c.code)}</span>
-          <div class="flex-1">
+        <li class="flex gap-3 sm:gap-4 py-3 border-b border-uc-slate last:border-0">
+          <span class="shrink-0 w-16 sm:w-20 text-xs font-mono font-semibold text-uc-red pt-0.5">${esc(c.code)}</span>
+          <div class="flex-1 min-w-0">
             <p class="font-serif font-semibold text-uc-charcoal leading-snug">${esc(c.title)}</p>
             <p class="text-xs text-uc-charcoal/60 mt-0.5">${esc(c.level)}</p>
           </div>
@@ -514,10 +513,10 @@
       return `
         ${current.length ? `
           <h3 class="text-xs font-semibold uppercase tracking-widest text-uc-red mb-3">Current Courses</h3>
-          <ul class="bg-white rounded-xl ring-1 ring-black/5 px-6 mb-8">${renderList(current)}</ul>` : ''}
+          <ul class="bg-white rounded-xl ring-1 ring-black/5 px-4 sm:px-6 mb-8">${renderList(current)}</ul>` : ''}
         ${past.length ? `
           <h3 class="text-xs font-semibold uppercase tracking-widest text-uc-charcoal/50 mb-3">Previously Taught</h3>
-          <ul class="bg-white rounded-xl ring-1 ring-black/5 px-6">${renderList(past)}</ul>` : ''}`;
+          <ul class="bg-white rounded-xl ring-1 ring-black/5 px-4 sm:px-6">${renderList(past)}</ul>` : ''}`;
     },
 
     grants() {
@@ -525,7 +524,7 @@
       const active    = D.grants.filter(g => g.status === 'Active');
       const concluded = D.grants.filter(g => g.status === 'Concluded');
       const renderGrants = items => items.map(g => `
-        <article class="bg-white rounded-xl ring-1 ring-black/5 p-5 flex gap-4">
+        <article class="bg-white rounded-xl ring-1 ring-black/5 p-4 sm:p-5 flex gap-3 sm:gap-4">
           <div class="shrink-0 mt-0.5">
             <span class="inline-block rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
               g.status === 'Active'
@@ -553,9 +552,9 @@
       return `
         <ol class="space-y-4">
           ${D.awards.map(a => `
-            <li class="flex gap-4 bg-white rounded-xl ring-1 ring-black/5 p-5">
+            <li class="flex gap-3 sm:gap-4 bg-white rounded-xl ring-1 ring-black/5 p-4 sm:p-5">
               <span class="shrink-0 w-10 text-sm font-bold text-uc-red tabular-nums pt-0.5">${esc(a.year)}</span>
-              <div>
+              <div class="min-w-0">
                 <p class="font-serif font-semibold text-uc-charcoal leading-snug">${esc(a.title)}</p>
                 <p class="mt-0.5 text-sm text-uc-charcoal/60">${esc(a.body)}</p>
               </div>
@@ -567,8 +566,8 @@
   function areaCards(items, detailed) {
     if (!items || !items.length) return emptyState('Research areas coming soon.');
     return items.map(a => `
-      <article class="bg-white rounded-xl p-6 shadow-sm ring-1 ring-black/5 border-t-4 border-uc-red">
-        <h3 class="font-serif text-xl font-semibold text-uc-charcoal">${esc(a.title)}</h3>
+      <article class="bg-white rounded-xl p-5 sm:p-6 shadow-sm ring-1 ring-black/5 border-t-4 border-uc-red">
+        <h3 class="font-serif text-lg sm:text-xl font-semibold text-uc-charcoal">${esc(a.title)}</h3>
         <p class="mt-3 text-sm leading-relaxed text-uc-charcoal/80">${esc(a.description)}</p>
         ${detailed && a.keywords ? `
           <ul class="mt-4 flex flex-wrap gap-2">
